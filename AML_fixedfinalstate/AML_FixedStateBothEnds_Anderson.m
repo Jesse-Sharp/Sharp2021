@@ -7,7 +7,7 @@ function [Sol,Fevals] = AML_FixedStateBothEnds_Anderson(tol,MaxFevals,M,Droptol)
 %is not achieved. 
 %Input M determines the maximum number of previous iterations to
 %incorporate in each iteration.
-%Input Droptol specifies the maximum accptable condition number of dG. 
+%Input Droptol specifies the maximum acceptable condition number of dG. 
 
 %% Set-up
 parameters.Tfinal = 10; %Specified final time
