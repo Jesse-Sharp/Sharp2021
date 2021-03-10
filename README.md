@@ -5,15 +5,17 @@ This repository contains 5 MATLAB scripts and 6 subfolders, corresponding to eac
 
 MATLAB scripts in the top level of the repository are provided for implementing the fixed point iteration method and acceleration algorithms considered in the work, for a system of arbitrary size N: 
 
-Example F = @(X) [X(1)-(X(1)^2+X(2)^2-5)/4;
+For example function calls: 
+F = @(X) [X(1)-(X(1)^2+X(2)^2-5)/4;
  X(2)-(X(1)*X(2)-2)/2;
 -(X(1)*X(3)-X(2))/3];
+X0 = [0;0;0];
 
-FixedPoint.m
-Aitken.m  
-Anderson.m 
-Steffensen.m
-Wegstein.m 
+FixedPoint.m - Example function call:  [root,Fevals] = FixedPoint(F,X0,1e-10,100)
+Aitken.m - Example function call:  [root,Fevals] = Aitken(F,X0,1e-10,100,3)  
+Anderson.m - Example function call:  [root,Fevals] = Anderson(F,X0,1e-10,100,3,1e10)
+Steffensen.m - Example function call:  [root,Fevals] = Steffensen(F,X0,1e-10,100,2)
+Wegstein.m - Example function call:  [root,Fevals] = Wegstein(F,X0,1e-10,100,3,0,0,0) 
 
 These scripts solve equations of the form _X = F(X)_, for the user specified 'F', initial guess 'X0', convergence tolerance 'tol', and maximum function evaluations 'MaxFevals'. The acceleration methods each require user specified tuning parameters. For the Aitken and Steffensen methods, input 'm' specifies the desired dimension of the _N x m_ difference matrices for the "partial" implementation discussed in Sharp2021; setting _m = N_ corresponds to the standard implementation of the Aitken and Steffensen methods. For Anderson Acceleration, input 'M' determines the maximum number of previous iterations to incorporate in each iteration, while input 'DropTol' specifies the maximum accptable condition number of the residual difference matrix, _dG_. For Wegstein's method, input 'nth' specifies how frequently to update q; every nth iteration, input 'bounding' acts as a switch to turn on or off bounds on _q_, with bounds applied if _bounding=1_. Inputs 'lower' and 'upper' specify the lower and upper bounds to apply when _bounding = 1_.
 
@@ -25,7 +27,7 @@ Each subfolder corresponds to a control problem presented in Sharp et al. 2021. 
 
 This subfolder contains 5 scripts/functions for implementation:
 - Linear_base.m - this script can be run directly to solve the linear continuous control problem using the standard FBSM without acceleration
-- Linear_Aitken.m - this function can be called with inputs 'tol', 'MaxFevals' and 'm' as described above, to solve the linear continuous control problem using the FBSM with the parital Aitken method. Example: [] = 
+- Linear_Aitken.m - this function can be called with inputs 'tol', 'MaxFevals' and 'm' as described above, to solve the linear continuous control problem using the FBSM with the parital Aitken method. Example fucntion call: [Control,Fevals]  = Linear_Aitken(1e-10,100,3);
 - Linear_Steffensen.m - this function can be called with inputs 'tol', 'MaxFevals' and 'm' as described above, to solve the linear continuous control problem using the FBSM with the parital Steffensen method
 - Linear_Wegstein.m - this function can be called with inputs 'tol', 'MaxFevals', 'nth', 'bounding', 'lower' and 'upper' as described above, to solve the linear continuous control problem using the FBSM with Wegstein's method
 - Linear_Anderson.m - this function can be called with inputs 'tol', 'MaxFevals', 'M' and 'DropTol' as described above, to solve the linear continuous control problem using the FBSM with Anderson Acceleration
