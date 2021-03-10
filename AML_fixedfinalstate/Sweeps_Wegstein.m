@@ -1,6 +1,6 @@
 % Author: Jesse Sharp; Last Update: 03/03/2021
 %  
-%Performs the FBSM with the Wegsetin method for a given guess theta of Lambda(end,3) 
+%Performs the FBSM with the Wegstein method for a given guess theta of Lambda(end,3) 
 %and model parameters. 
 function [z,SweepFevals] = Sweeps_Wegstein(theta,parameters) 
 %% Set-up
