@@ -8,7 +8,7 @@ function [root,Fevals] = Anderson(F,X0,tol,MaxFevals,M,Droptol)
 %perform before terminating the process if convergence is not achieved. 
 %Input M determines the maximum number of previous iterations to
 %incorporate in each iteration.
-%Input Droptol specifies the maximum accptable condition number of dG. 
+%Input Droptol specifies the maximum acceptable condition number of dG. 
 
 %% Set-up
 Fevals = 0;
