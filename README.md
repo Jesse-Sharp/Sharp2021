@@ -5,7 +5,7 @@ This repository contains 5 MATLAB scripts and 6 subfolders, corresponding to eac
 
 MATLAB scripts in the top level of the repository are provided for implementing the fixed point iteration method and acceleration algorithms considered in the work, for a system of arbitrary size N: 
 
-Example F3 = @(X) [X(1)-(X(1)^2+X(2)^2-5)/4;
+Example F = @(X) [X(1)-(X(1)^2+X(2)^2-5)/4;
  X(2)-(X(1)*X(2)-2)/2;
 -(X(1)*X(3)-X(2))/3];
 
