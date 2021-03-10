@@ -1,7 +1,7 @@
 % Author: Jesse Sharp; Last Update: 03/03/2021
 %   
-%performs the FBSM for a given guess theta of Lambda(end,3) and model
-%parameters
+%Performs the FBSM with the Aitken method for a given guess theta of Lambda(end,3) 
+%and model parameters. 
 function [z,SweepFevals] = Sweeps_Aitken(theta,parameters) 
 %% Set-up
 parameters.theta = theta;
