@@ -11,11 +11,11 @@ F = @(X) [X(1)-(X(1)^2+X(2)^2-5)/4;
 -(X(1)*X(3)-X(2))/3];
 X0 = [0;0;0];
 
-FixedPoint.m - Example function call:  [root,Fevals] = FixedPoint(F,X0,1e-10,100) 
-Aitken.m - Example function call:  [root,Fevals] = Aitken(F,X0,1e-10,100,3)   
-Anderson.m - Example function call:  [root,Fevals] = Anderson(F,X0,1e-10,100,3,1e10) 
-Steffensen.m - Example function call:  [root,Fevals] = Steffensen(F,X0,1e-10,100,2) 
-Wegstein.m - Example function call:  [root,Fevals] = Wegstein(F,X0,1e-10,100,3,0,0,0)  
+FixedPoint.m - Example function call:  [root,Fevals] = FixedPoint(F,X0,1e-10,100)   
+Aitken.m - Example function call:  [root,Fevals] = Aitken(F,X0,1e-10,100,3)     
+Anderson.m - Example function call:  [root,Fevals] = Anderson(F,X0,1e-10,100,3,1e10)   
+Steffensen.m - Example function call:  [root,Fevals] = Steffensen(F,X0,1e-10,100,2)   
+Wegstein.m - Example function call:  [root,Fevals] = Wegstein(F,X0,1e-10,100,3,0,0,0)    
 
 These scripts solve equations of the form _X = F(X)_, for the user specified 'F', initial guess 'X0', convergence tolerance 'tol', and maximum function evaluations 'MaxFevals'. The acceleration methods each require user specified tuning parameters. For the Aitken and Steffensen methods, input 'm' specifies the desired dimension of the _N x m_ difference matrices for the "partial" implementation discussed in Sharp2021; setting _m = N_ corresponds to the standard implementation of the Aitken and Steffensen methods. For Anderson Acceleration, input 'M' determines the maximum number of previous iterations to incorporate in each iteration, while input 'DropTol' specifies the maximum accptable condition number of the residual difference matrix, _dG_. For Wegstein's method, input 'nth' specifies how frequently to update q; every nth iteration, input 'bounding' acts as a switch to turn on or off bounds on _q_, with bounds applied if _bounding=1_. Inputs 'lower' and 'upper' specify the lower and upper bounds to apply when _bounding = 1_.
 
