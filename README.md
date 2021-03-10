@@ -5,7 +5,7 @@ This repository contains 5 MATLAB scripts and 6 subfolders, corresponding to eac
 
 MATLAB scripts in the top level of the repository are provided for implementing the fixed point iteration method and acceleration algorithms considered in the work, for a system of arbitrary size N: 
 
-For example function calls: 
+For example function calls the following system corresponds to Equation S24 of the supplementary material of Sharp et al. 2021. 
 F = @(X) [X(1)-(X(1)^2+X(2)^2-5)/4;
  X(2)-(X(1)*X(2)-2)/2;
 -(X(1)*X(3)-X(2))/3];
@@ -19,9 +19,7 @@ Wegstein.m - Example function call:  [root,Fevals] = Wegstein(F,X0,1e-10,100,3,0
 
 These scripts solve equations of the form _X = F(X)_, for the user specified 'F', initial guess 'X0', convergence tolerance 'tol', and maximum function evaluations 'MaxFevals'. The acceleration methods each require user specified tuning parameters. For the Aitken and Steffensen methods, input 'm' specifies the desired dimension of the _N x m_ difference matrices for the "partial" implementation discussed in Sharp2021; setting _m = N_ corresponds to the standard implementation of the Aitken and Steffensen methods. For Anderson Acceleration, input 'M' determines the maximum number of previous iterations to incorporate in each iteration, while input 'DropTol' specifies the maximum accptable condition number of the residual difference matrix, _dG_. For Wegstein's method, input 'nth' specifies how frequently to update q; every nth iteration, input 'bounding' acts as a switch to turn on or off bounds on _q_, with bounds applied if _bounding=1_. Inputs 'lower' and 'upper' specify the lower and upper bounds to apply when _bounding = 1_. In addition to these tuning parameters, 
 
-
-
-Each subfolder corresponds to a control problem presented in Sharp et al. 2021. Their contents and description are provided: 
+Each subfolder corresponds to a control problem presented in Sharp et al. 2021. The contents of each subfolder and a description are provided: 
 
 **Linear_continuous** - Corresponds to the linear continuous control problem described in Section 3 of Sharp et al. 2021. 
 
@@ -77,10 +75,10 @@ The above scripts are dependent on the following (all contained within the Linea
 
 This subfolder contains 5 scripts/functions for implementation:
 - AML_base.m - this script can be run directly to solve the AML continuous control problem using the standard FBSM without acceleration
-- AML_Aitken.m - this function can be called with inputs 'tol', 'MaxFevals' and 'm' as described above, to solve the AML continuous control problem using the FBSM with the parital Aitken method
-- AML_Steffensen.m - this function can be called with inputs 'tol', 'MaxFevals' and 'm' as described above, to solve the AML continuous control problem using the FBSM with the parital Steffensen method
-- AML_Wegstein.m - this function can be called with inputs 'tol', 'MaxFevals', 'nth', 'bounding', 'lower' and 'upper' as described above, to solve the AML continuous control problem using the FBSM with Wegstein's method
-- AML_Anderson.m - this function can be called with inputs 'tol', 'MaxFevals', 'M' and 'DropTol' as described above, to solve the AML continuous control problem using the FBSM with Anderson Acceleration
+- AML_Aitken.m - this function can be called with inputs 'tol', 'MaxFevals' and 'm' as described above, to solve the AML continuous control problem using the FBSM with the parital Aitken method. Example function call: [Control,Fevals]  = AML_Aitken(1e-10,100,5,0.5);  
+- AML_Steffensen.m - this function can be called with inputs 'tol', 'MaxFevals' and 'm' as described above, to solve the AML continuous control problem using the FBSM with the parital Steffensen method. Example function call: [Control,Fevals]  = AML_Steffensen(1e-10,100,5,0.5);  
+- AML_Wegstein.m - this function can be called with inputs 'tol', 'MaxFevals', 'nth', 'bounding', 'lower' and 'upper' as described above, to solve the AML continuous control problem using the FBSM with Wegstein's method. Example function call: [Control,Fevals]  = AML_Wegstein(1e-10,100,6,1,-1,1,0.55);  
+- AML_Anderson.m - this function can be called with inputs 'tol', 'MaxFevals', 'M' and 'DropTol' as described above, to solve the AML continuous control problem using the FBSM with Anderson Acceleration. Example function call: [Control,Fevals]  = AML_Anderson(1e-10,100,6,1e10,0.85);  
 
 The above scripts are dependent on the following (all contained within the AML_continuous folder):
 - Control.m - function for the control     
