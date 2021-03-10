@@ -1,5 +1,7 @@
 % Author: Jesse Sharp; Last Update: 03/03/2021
 %  
+%Performs the FBSM with the Steffensen method for a given guess theta of Lambda(end,3) 
+%and model parameters. 
 function [z,SweepFevals] = Sweeps_Steffensen(theta,parameters) 
 %% Set-up
 parameters.theta = theta;
