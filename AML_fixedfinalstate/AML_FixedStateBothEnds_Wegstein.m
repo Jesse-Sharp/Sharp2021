@@ -80,7 +80,7 @@ delete(h)
 hold on
 line1=plot(z2(:,1),z2(:,4),'color',[169/255,169/255,169/255],'LineWidth',2);
 h = text(4,0.375,sprintf('{\\Sigma} = %0.0f',CumulativeFevals),'FontSize',18);
-h2 = text(9.3,z2(end,4)-0.01,sprintf('%0.0f',CumulativeFevals),'FontSize',18);
+h2 = text(9,z2(end,4)-0.01,sprintf('%0.0f',CumulativeFevals),'FontSize',18);
 hL = legend(line1,{'\it{L}'},'Location','northwest');
 drawnow 
 
