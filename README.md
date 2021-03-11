@@ -19,7 +19,7 @@ Wegstein.m - Example function call:  [root,Fevals] = Wegstein(F,X0,1e-10,100,3,0
 
 These scripts solve equations of the form _X = F(X)_, for the user specified 'F', initial guess 'X0', convergence tolerance 'tol', and maximum function evaluations 'MaxFevals'. The acceleration methods each require user specified tuning parameters. For the Aitken and Steffensen methods, input 'm' specifies the desired dimension of the _N x m_ difference matrices for the "partial" implementation discussed in Sharp2021; setting _m = N_ corresponds to the standard implementation of the Aitken and Steffensen methods. For Anderson Acceleration, input 'M' determines the maximum number of previous iterations to incorporate in each iteration, while input 'Droptol' specifies the maximum accptable condition number of the residual difference matrix, _dG_. For Wegstein's method, input 'nth' specifies how frequently to update q; every nth iteration, input 'bounding' acts as a switch to turn on or off bounds on _q_, with bounds applied if _bounding=1_. Inputs 'lower' and 'upper' specify the lower and upper bounds to apply when _bounding = 1_. In addition to these tuning parameters, 
 
-Each subfolder corresponds to a control problem presented in Sharp et al. 2021. The contents of each subfolder and a description are provided: 
+Each subfolder corresponds to a control problem presented in Sharp et al. 2021. The contents of each subfolder and a description are provided below. Note that control problems with fixed endpoints require solving several FBSM problems, and may  
 
 **Linear_continuous** - Corresponds to the linear continuous control problem described in Section 3 of Sharp et al. 2021. 
 
