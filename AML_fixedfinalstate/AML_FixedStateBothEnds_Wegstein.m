@@ -119,3 +119,24 @@ end
 Sol=z;
 Fevals = CumulativeFevals;
 
+box on
+set(gca, 'FontSize', 18)
+set(gca, 'FontName', 'Times New Roman')
+ylabel('State','fontsize',18);
+xlabel('\it t','fontsize',18);
+set(gca, 'FontSize', 18)
+
+figure
+box on
+line1=plot(z(:,1),z(:,2),'color',[0/255,114.75/255,188.7/255],'LineWidth',2);
+hold on
+line2=plot(z(:,1),z(:,3),'color',[216.75/255,84.15/255,25.5/255],'LineWidth',2);
+line3=plot(z(:,1),z(:,4),'color',[237.15/255,175.95/255,33.15/255],'LineWidth',2);
+line4=plot(z(:,1),z(:,5),'k--','LineWidth',2);
+h = text(4,0.3,sprintf('Cumulative Fevals: %0.0f',CumulativeFevals),'FontSize',18);
+hL = legend([line1,line2,line3,line4],{'\it{S}','\it{A}','\it{L}','\it{u*}'},'Location','northeast');
+set(gca, 'FontName', 'Times New Roman')
+ylabel('State','fontsize',18);
+xlabel('\it t','fontsize',18);
+set(gca, 'FontSize', 18)
+hold off
