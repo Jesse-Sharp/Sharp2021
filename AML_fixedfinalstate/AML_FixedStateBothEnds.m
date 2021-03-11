@@ -99,7 +99,6 @@ while SecantErr > SecantTol
     hold on
     line1=plot(z(:,1),z(:,4),'color',[237.15/255,175.95/255,33.15/255],'LineWidth',2);
     h = text(4,0.3,sprintf('Cumulative Fevals: %0.0f',CumulativeFevals),'FontSize',18);
-    %h2 = text(9.3,z(end,4),sprintf('%0.0f',CumulativeFevals));
     hL = legend(line1,{'\it{L}'},'Location','northwest');
     drawnow
 end
