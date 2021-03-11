@@ -98,7 +98,6 @@ figure(1)
 delete(h)
 hold on
 line1=plot(z(:,1),z(:,4),'color',[169/255,169/255,169/255],'LineWidth',2);
-line1=plot(z(:,1),z(:,4),'color',[237.15/255,175.95/255,33.15/255],'LineWidth',2);
 h = text(4,0.375,sprintf('{\\Sigma} = %0.0f',CumulativeFevals),'FontSize',18);
 hL = legend(line1,{'\it{L}'},'Location','northwest');
 drawnow 
