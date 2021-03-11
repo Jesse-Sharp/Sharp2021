@@ -14,7 +14,7 @@ parameters.Tfinal = 10; %Specified final time
 Tfinal = parameters.Tfinal; 
 parameters.dt = 2^-11; %Time-step
 parameters.N = Tfinal/parameters.dt+1; %Number of nodes in time discretisation
-parameters.omega = 0.55; %Portion of previous iteration's control maintained when updating control
+parameters.omega = 0.5; %Portion of previous iteration's control maintained when updating control
 parameters.tol = tol;
 parameters.MaxFevals = MaxFevals;
 
