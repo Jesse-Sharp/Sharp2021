@@ -59,8 +59,10 @@ Va = z1(end,4)-s; %Record difference between final value of y(end,3) and target,
 figure(1)
 line1=plot(z1(:,1),z1(:,4),'k');
 axis([0,Tfinal,0,0.4])
-h = text(0.2,-1,sprintf('Cumulative Sweeps: %0.0f',CumulativeFevals));
-hL = legend(line1,{'y1'},'Location','northwest');
+h = text(4,0.375,sprintf('{\\Sigma} = %0.0f',CumulativeFevals),'FontSize',18);
+h2 = text(9.3,z1(end,4)+0.02,sprintf('%0.0f',CumulativeFevals),'FontSize',18);
+hL = legend(line1,{'\it{L}'},'Location','northwest');
+drawnow
 
 %Generate second secant method value using second initial guess for
 %Lambda(3,end).
@@ -73,8 +75,10 @@ figure(1)
 delete(h)
 hold on
 line1=plot(z2(:,1),z2(:,4),'k');
-h = text(0.2,-1,sprintf('Cumulative Sweeps: %0.0f',CumulativeFevals));
-hL = legend(line1,{'y1'},'Location','northwest');
+h = text(4,0.375,sprintf('{\\Sigma} = %0.0f',CumulativeFevals),'FontSize',18);
+h2 = text(9.3,z2(end,4)-0.01,sprintf('%0.0f',CumulativeFevals),'FontSize',18);
+hL = legend(line1,{'\it{L}'},'Location','northwest');
+drawnow 
 
 %%Perform Secant method
 SecantErr = inf; %Initialise error for secant method
@@ -106,8 +110,8 @@ figure(1)
 delete(h)
 hold on
 line1=plot(z(:,1),z(:,4),'k');
-h = text(0.2,-1,sprintf('Cumulative Sweeps: %0.0f',CumulativeFevals));
-hL = legend(line1,{'y1'},'Location','northwest');
+h = text(4,0.375,sprintf('{\\Sigma} = %0.0f',CumulativeFevals),'FontSize',18);
+hL = legend(line1,{'\it{L}'},'Location','northwest');
 end
 %Return function outputs
 Sol=z;
