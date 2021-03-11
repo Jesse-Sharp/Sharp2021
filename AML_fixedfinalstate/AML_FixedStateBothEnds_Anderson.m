@@ -59,9 +59,9 @@ Va = z1(end,4)-s; %Record difference between final value of y(end,3) and target,
 
 %Plotting
 figure(1)
-line1=plot(z1(:,1),z1(:,4),'color',[237.15/255,175.95/255,33.15/255],'LineWidth',2);
+line1=plot(z1(:,1),z1(:,4),'color',[169/255,169/255,169/255],'LineWidth',2);
 axis([0,Tfinal,0,0.4])
-h = text(4,0.3,sprintf('Cumulative Fevals: %0.0f',CumulativeFevals),'FontSize',18);
+h = text(4,0.375,sprintf('{\\Sigma} = %0.0f',CumulativeFevals),'FontSize',18);
 h2 = text(9.3,z1(end,4)+0.02,sprintf('%0.0f',CumulativeFevals),'FontSize',18);
 hL = legend(line1,{'\it{L}'},'Location','northwest');
 drawnow 
@@ -76,8 +76,8 @@ Vb = z2(end,4)-s;
 figure(1)
 delete(h)
 hold on
-line1=plot(z2(:,1),z2(:,4),'color',[237.15/255,175.95/255,33.15/255],'LineWidth',2);
-h = text(4,0.3,sprintf('Cumulative Fevals: %0.0f',CumulativeFevals),'FontSize',18);
+line1=plot(z2(:,1),z2(:,4),'color',[169/255,169/255,169/255],'LineWidth',2);
+h = text(4,0.375,sprintf('{\\Sigma} = %0.0f',CumulativeFevals),'FontSize',18);
 h2 = text(9.3,z2(end,4)-0.01,sprintf('%0.0f',CumulativeFevals),'FontSize',18);
 hL = legend(line1,{'\it{L}'},'Location','northwest');
 drawnow 
@@ -106,13 +106,13 @@ SecantErr = abs(Va); %Error for secant method
 CumulativeFevals = CumulativeFevals + Fevals;
 
     %Plotting
-    figure(1)
-    delete(h)
-    hold on
-    line1=plot(z(:,1),z(:,4),'color',[237.15/255,175.95/255,33.15/255],'LineWidth',2);
-    h = text(4,0.3,sprintf('Cumulative Fevals: %0.0f',CumulativeFevals),'FontSize',18);
-    hL = legend(line1,{'\it{L}'},'Location','northwest');
-    drawnow
+figure(1)
+delete(h)
+hold on
+line1=plot(z(:,1),z(:,4),'color',[169/255,169/255,169/255],'LineWidth',2);
+h = text(4,0.375,sprintf('{\\Sigma} = %0.0f',CumulativeFevals),'FontSize',18);
+hL = legend(line1,{'\it{L}'},'Location','northwest');
+drawnow 
 end  
 Sol=z;
 Fevals = CumulativeFevals;
