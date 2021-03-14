@@ -5,7 +5,7 @@ This repository contains 5 MATLAB scripts and 6 subfolders, corresponding to eac
 
 MATLAB scripts in the top level of the repository are provided for implementing the fixed point iteration method and acceleration algorithms considered in the work, for a system of arbitrary size N: 
 
-For example function calls the following system corresponds to Equation S24 of the supplementary material of Sharp et al. 2021.   
+The following system corresponds to Equation S24 of the supplementary material of Sharp et al. 2021, and can be used for example function calls to test the algorithms in the top level of the repository.   
 F = @(X) [X(1)-(X(1)^2+X(2)^2-5)/4;
  X(2)-(X(1)*X(2)-2)/2;
 -(X(1)*X(3)-X(2))/3];  
@@ -19,7 +19,7 @@ Wegstein.m - Example function call:  [root,Fevals] = Wegstein(F,X0,1e-10,100,3,0
 
 These scripts solve equations of the form _X = F(X)_, for the user specified 'F', initial guess 'X0', convergence tolerance 'tol', and maximum function evaluations 'MaxFevals'. The acceleration methods each require user specified tuning parameters. For the Aitken and Steffensen methods, input 'm' specifies the desired dimension of the _N x m_ difference matrices for the "partial" implementation discussed in Sharp2021; setting _m = N_ corresponds to the standard implementation of the Aitken and Steffensen methods. For Anderson Acceleration, input 'M' determines the maximum number of previous iterations to incorporate in each iteration, while input 'Droptol' specifies the maximum accptable condition number of the residual difference matrix, _dG_. For Wegstein's method, input 'nth' specifies how frequently to update q; every nth iteration, input 'bounding' acts as a switch to turn on or off bounds on _q_, with bounds applied if _bounding=1_. Inputs 'lower' and 'upper' specify the lower and upper bounds to apply when _bounding = 1_. In addition to these tuning parameters, 
 
-Each subfolder corresponds to a control problem presented in Sharp et al. 2021. The contents of each subfolder and a description are provided below. Note that control problems with fixed endpoints require solving several FBSM problems, and may  
+Each subfolder corresponds to a control problem presented in Sharp et al. 2021. The contents of each subfolder and a description are provided below. Note that control problems with fixed endpoints require solving several FBSM problems, and may run for several minutes on a standard desktop computer.  
 
 **Linear_continuous** - Corresponds to the linear continuous control problem described in Section 3 of Sharp et al. 2021. 
 
@@ -105,10 +105,10 @@ The above scripts are dependent on the following (all contained within the AML_b
 
 This subfolder contains 5 scripts/functions for implementation:
 - AML_FixedStateBothEnds.m - this script can be run directly to solve the AML fixed endpoint control problem using the adapted FBSM without acceleration
-- AML_FixedStateBothEnds_Aitken.m - this function can be called with inputs 'tol', 'MaxFevals' and 'm' as described above, to solve the AML fixed endpoint control problem using the adapted FBSM with the parital Aitken method
-- AML_FixedStateBothEnds_Steffensen.m - this function can be called with inputs 'tol', 'MaxFevals' and 'm' as described above, to solve the AML fixed endpoint control problem using the adapted FBSM with the parital Steffensen method
-- AML_FixedStateBothEnds_Wegstein.m - this function can be called with inputs 'tol', 'MaxFevals', 'nth', 'bounding', 'lower' and 'upper' as described above, to solve the AML fixed endpoint control problem using the adapted FBSM with Wegstein's method
-- AML_FixedStateBothEnds_Anderson.m - this function can be called with inputs 'tol', 'MaxFevals', 'M' and 'Droptol' as described above, to solve the AML fixed endpoint control problem using the adapted FBSM with Anderson Acceleration
+- AML_FixedStateBothEnds_Aitken.m - this function can be called with inputs 'tol', 'MaxFevals' and 'm' as described above, to solve the AML fixed endpoint control problem using the adapted FBSM with the parital Aitken method. Example function call: [Sol,Fevals] = AML_FixedStateBothEnds_Aitken(1e-10,1000,5);
+- AML_FixedStateBothEnds_Steffensen.m - this function can be called with inputs 'tol', 'MaxFevals' and 'm' as described above, to solve the AML fixed endpoint control problem using the adapted FBSM with the parital Steffensen method. Example function call: [Sol,Fevals] = AML_FixedStateBothEnds_Steffensen(1e-10,1000,5);
+- AML_FixedStateBothEnds_Wegstein.m - this function can be called with inputs 'tol', 'MaxFevals', 'nth', 'bounding', 'lower' and 'upper' as described above, to solve the AML fixed endpoint control problem using the adapted FBSM with Wegstein's method. Example function call: [Sol,Fevals] = AML_FixedStateBothEnds_Anderson(1e-10,1000,6,1e10); 
+- AML_FixedStateBothEnds_Anderson.m - this function can be called with inputs 'tol', 'MaxFevals', 'M' and 'Droptol' as described above, to solve the AML fixed endpoint control problem using the adapted FBSM with Anderson Acceleration. Example function call: [Sol,Fevals] = AML_FixedStateBothEnds_Anderson(1e-10,1000,6,1e10);
 
 The above scripts are dependent on the following (all contained within the AML_fixedfinalstate folder):
 - Control.m - function for the control     
