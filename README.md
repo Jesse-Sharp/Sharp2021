@@ -1,11 +1,9 @@
 # Sharp2021
 Code for implementing iterative acceleration techniques for general systems and within the forward-backward sweep method (FBSM). 
 
-This repository contains 5 MATLAB scripts and 6 subfolders, corresponding to each of the linear and acute myeloid leukaemia (AML) control problems considered in the work of Sharp et al. 2021. Where functions can be called by users, we provide example function calls corresponding to results presented in the paper. 
+This repository contains six subfolders corresponding to each of the linear and acute myeloid leukaemia (AML) control problems considered in the work of Sharp et al. 2021, and one subfolder containing the implementation of the fixed point iteration method and acceleration algorithms considered in the work, for a system of arbitrary size N. Where functions can be called by users, we provide example function calls corresponding to results presented in the paper. 
 
-MATLAB scripts in the top level of the repository are provided for implementing the fixed point iteration method and acceleration algorithms considered in the work, for a system of arbitrary size N: 
-
-The following system corresponds to Equation S24 of the supplementary material of Sharp et al. 2021, and can be used for example function calls to test the algorithms in the top level of the repository.   
+The following system corresponds to Equation S24 of the supplementary material of Sharp et al. 2021, and can be used for example function calls to test the algorithms in the **Nonlinear_System_Solvers** subfolder.   
 F = @(X) [X(1)-(X(1)^2+X(2)^2-5)/4;
  X(2)-(X(1)*X(2)-2)/2;
 -(X(1)*X(3)-X(2))/3];  
@@ -19,7 +17,7 @@ Wegstein.m - Example function call:  [root,Fevals] = Wegstein(F,X0,1e-10,100,3,0
 
 These scripts solve equations of the form _X = F(X)_, for the user specified 'F', initial guess 'X0', convergence tolerance 'tol', and maximum function evaluations 'MaxFevals'. The acceleration methods each require user specified tuning parameters. For the Aitken and Steffensen methods, input 'm' specifies the desired dimension of the _N x m_ difference matrices for the "partial" implementation discussed in Sharp2021; setting _m = N_ corresponds to the standard implementation of the Aitken and Steffensen methods. For Anderson Acceleration, input 'M' determines the maximum number of previous iterations to incorporate in each iteration, while input 'Droptol' specifies the maximum accptable condition number of the residual difference matrix, _dG_. For Wegstein's method, input 'nth' specifies how frequently to update q; every nth iteration, input 'bounding' acts as a switch to turn on or off bounds on _q_, with bounds applied if _bounding=1_. Inputs 'lower' and 'upper' specify the lower and upper bounds to apply when _bounding = 1_. In addition to these tuning parameters, 
 
-Each subfolder corresponds to a control problem presented in Sharp et al. 2021. The contents of each subfolder and a description are provided below. Note that control problems with fixed endpoints require solving several FBSM problems, and may run for several minutes on a standard desktop computer.  
+Each of the remaining subfolders correspond to a control problem presented in Sharp et al. 2021. The contents of each subfolder and a description are provided below. Note that control problems with fixed endpoints require solving several FBSM problems, and may run for several minutes on a standard desktop computer.  
 
 **Linear_continuous** - Corresponds to the linear continuous control problem described in Section 3 of Sharp et al. 2021. 
 
@@ -120,3 +118,5 @@ The above scripts are dependent on the following (all contained within the AML_f
 - Sweeps_Anderson.m - subroutine that solves the internal FBSM problems with Anderson Acceleration for a guess, 'theta', of the adapted FBSM 
 - Sweeps_Steffensen.m - subroutine that solves the internal FBSM problems with the Steffensen method for a guess, 'theta', of the adapted FBSM 
 - Sweeps_Wegstein.m - subroutine that solves the internal FBSM problems with the Wegstein method for a guess, 'theta', of the adapted FBSM 
+
+We note that implementation of Anderson Acceleration involves computing condition numbers of matrices. Matrices that are ill-conditioned (indicated by a large condition number), are close to singular, such that significant numerical error can arise when computing the inverse, or obtaining the solution of a corresponding linear system of equations (Higham DJ, 1995. Condition numbers and their conditiuon numbers). It is known that for ill-conditioned matrices, computation of the condition number can itself be highly sensitive (Highham 1995). As such, computing condition numbers is commonly impacted by underflow and overflow, or rounding errors (Demmel JW, Li X, 1994. Faster numerical algorithms via exception handling, Highham 1995). For this reason, users attempting to reproduce results of the Anderson Acceleration method using different software or hardware may find that in some instances convergence is achieved with a different $\mathcal{N}$ to what is indicated in the tables, depending on whether the estimated condition number at each iteration suggests that the matrix is ill-conditioned. For a thorough discussion of condition numbers and issues arising from floating point arithmetic we direct readers to (Higham NJ, 2002. Accuracy and Stability of Numerical Algorithms).   
