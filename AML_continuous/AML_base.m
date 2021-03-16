@@ -47,7 +47,7 @@ while Fevals<MaxFevals && Err > tol
     
     Err = norm(U-uprev);
     
-    %%To view the solution as it converges, uncomment this block (line 53 to line 67)
+    %%To view the solution as it converges, uncomment this block (line 52 to line 66)
     %%to produce interim figures
 %     figure(1)
 %     box on
