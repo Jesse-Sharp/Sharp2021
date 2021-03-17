@@ -127,3 +127,20 @@ while  Err > tol
 
 end
 Control = X(:,end);
+
+%% Plot states with optimal control
+figure
+[y,~,~] = FBSM_BB(y0,Control,parameters);  %Compute state ODE based on most recent control
+box on
+line1 = plot(t_y,y(:,1),'LineWidth',2);
+hold on
+line2 = plot(t_y,y(:,2),'LineWidth',2);
+line3 = plot(t_y,y(:,3),'LineWidth',2);
+line4 = plot(t_y,Control,'k--','LineWidth',2);
+hL = legend([line1,line2,line3,line4],{'\it{S}','\it{A}','\it{L}','\it{u*}'},'Location','northeast');
+set(gca, 'FontName', 'Times New Roman')
+ylabel('State','fontsize',18);
+xlabel('\it t','fontsize',18);
+axis([0,Tfinal,0,1])
+set(gca, 'FontSize', 18)
+hold off
