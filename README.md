@@ -1,5 +1,7 @@
 # Sharp2021
-Code for implementing iterative acceleration techniques for general systems and within the forward-backward sweep method (FBSM). 
+Code for implementing iterative acceleration techniques for general systems and within the forward-backward sweep method (FBSM), featured in Sharp et al. 2021:
+
+JA Sharp, K Burrage, MJ Simpson. 2021 Implementation and acceleration of optimal control for systems biology. _Journal of the Royal Society Interface_ **18**, 20210241. (doi.org/10.1098/rsif.2021.0241). 
 
 This repository contains six subfolders corresponding to each of the linear and acute myeloid leukaemia (AML) control problems considered in the work of Sharp et al. 2021, and one subfolder containing the implementation of the fixed point iteration method and acceleration algorithms considered in the work, for a system of arbitrary size N. Where functions can be called by users, we provide example function calls corresponding to results presented in the paper. 
 
